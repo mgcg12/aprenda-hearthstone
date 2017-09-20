@@ -12,6 +12,9 @@ app.get("/", function(req,res){
 app.get("/aulas", function(req,res){
 	res.render("aulas")
 })
+app.get("/sobre", function(req,res){
+	res.render("sobre")
+})
 
 app.listen(process.env.PORT || 3000, function(){
 	console.log("Site on")

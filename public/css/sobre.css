@@ -1,0 +1,37 @@
+@media (min-width: 1px) and (max-width: 540px) {
+.bannertext {
+    padding-top: 30%;
+}
+.logo {
+    margin-top: -120px;
+}
+ }
+
+@media (min-width: 541px) and (max-width: 800px) {
+.bannertext {
+    padding-top: 22%;
+} }
+
+@media (min-width: 801px) and (max-width: 1100px) {
+.bannertext {
+    padding-top: 20%;
+} }
+
+@media (min-width: 1101px) and (max-width: 1500px) {
+.bannertext {
+    padding-top: 15%;
+} }
+@media (min-width: 1501px) and (max-width: 4000px) {
+.bannertext {
+    padding-top: 10%;
+} }
+
+@media (min-width: 1px) and (max-width: 320px) {
+.logo {
+    margin-top: -100px;
+}
+ }
+ @media (min-width: 1px) and (max-width: 800px) {
+.hsbackground4{
+	    background-position: center center !important;
+ }}
