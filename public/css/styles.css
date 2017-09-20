@@ -1,3 +1,17 @@
+// Rotate animation:
+  @keyframes spin { /* CSS3 */
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @-moz-keyframes spin { /* Firefox */
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @-webkit-keyframes spin { /* Webkit */
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
 @font-face {
     font-family: Hearthstone;
     src: url(/fonts/Belwe-Medium.otf);
@@ -28,7 +42,7 @@ padding: 10%;*/
 
 .hsbackground3{
   background: url("/img/bgaulas.jpg") no-repeat center center;
-  height: 400px;
+  height: 490px;
   background-size: cover;
   filter: drop-shadow(#c29a56 0px 10px 13px);
       transition: 0.3s;
@@ -79,7 +93,7 @@ padding: 10%;*/
     margin-top: -120px;
 }}
 /*.h-100px{    height: 100px;}*/
-.minicurso{
+.minicurso, .aula{
     border: 2px solid #28a745;
     border-radius: 2%;
     padding: 1%;
@@ -92,3 +106,8 @@ padding: 10%;*/
 .opacity-0{opacity: 0;}
 .font-36{font-size: 36px;}
 .border-bottom-white{border-bottom:1px solid white;}
+.spin-15{animation: spin 15s linear infinite;-moz-animation: spin 15s linear infinite;-webkit-animation: spin 15s linear infinite;}
+.bouncein-4{animation: bounceIn 4s linear infinite;-moz-animation: bounceIn 4s linear infinite;-webkit-animation: bounceIn 4s linear infinite; transition: all 1s}
+.bouncein-4:hover{filter: drop-shadow(#28a745 3px 3px 2px);}
+.h-200{height: 200px;}
+.border-radius-5{border-radius: 5%;}

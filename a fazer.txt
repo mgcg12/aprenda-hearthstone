@@ -1,0 +1,23 @@
+decks
+	tipos de decks
+	decks em alta no meta
+o básico
+	controle de mesa
+	mecânicas de compra de card - vantagem de cards
+	administração de recursos
+	correndo contra o tempo
+	extraindo mais valor das cartas
+	manipulação de mana - eficiencia de mana - ficando na curva
+	quando dar na cara
+	trocas favoráveis
+	o mulligan
+classes
+	conheça todas
+	a lógica das classes
+	personagens especiais
+fórum
+artigos
+cursos (estilo codecademy)
+crie seu card personalizado
+simulador de hearthstone
+Encontros Fireside
