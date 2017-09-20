@@ -9,6 +9,9 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.get("/", function(req,res){
 	res.render("home")
 })
+app.get("/aulas", function(req,res){
+	res.render("aulas")
+})
 
 app.listen(process.env.PORT || 3000, function(){
 	console.log("Site on")

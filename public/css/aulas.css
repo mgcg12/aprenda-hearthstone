@@ -1,0 +1,32 @@
+@media (min-width: 1px) and (max-width: 540px) {
+.bannertext {
+    padding-top: 40%;
+} }
+
+@media (min-width: 541px) and (max-width: 800px) {
+.bannertext {
+    padding-top: 30%;
+} }
+
+@media (min-width: 801px) and (max-width: 1100px) {
+.bannertext {
+    padding-top: 20%;
+} }
+
+@media (min-width: 1101px) and (max-width: 1500px) {
+.bannertext {
+    padding-top: 15%;
+} }
+@media (min-width: 1501px) and (max-width: 4000px) {
+.bannertext {
+    padding-top: 10%;
+} }
+/*#top-image {
+background:url('https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/0/8/8905/red-rocks-park-o.jpg') -25px -50px;
+position:fixed ;
+top:0;
+width:100%;
+z-index:0;
+  height:100%;
+  background-size: calc(100% + 50px);
+}*/
