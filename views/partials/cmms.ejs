@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center my-4">Comentários</h3>
+      <p class="text-center my-4">Deixe seu recado ou entre na discussão com outras pessoas!</p>
+    </div>
+  </div>
+</div>
+
+<% include cmmform %>
+
+<div class="container">
+    <div class="row">
+            <% comment.forEach(function(cmm) { %>
+                <div class="col-12">
+                  <div class="row comment border-radius-5 my-3">
+                    <div class="col-12 col-md-3">
+                      <p>Nome: <%= cmm["nome"] %></p>
+                      <p>Cidade: <%= cmm["cidade"] %></p>
+                    </div>
+                    <div class="col-12 col-md-9">
+                      <p>Comentário: <%= cmm["cmm"] %></p>
+                    </div>
+                  </div>
+                </div> 
+            <% }); %>
+        </div>
+    </div>
