@@ -10,6 +10,6 @@ app.get("/", function(req,res){
 	res.render("pages/home")
 })
 
-app.listen(3002,"localhost", function(){
+app.listen(process.env.PORT || 3000, function(){
 	console.log("Site on")
 })
