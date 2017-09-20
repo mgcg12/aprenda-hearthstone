@@ -7,7 +7,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 app.get("/", function(req,res){
-	res.render("pages/home")
+	res.render("home")
 })
 
 app.listen(process.env.PORT || 3000, function(){
