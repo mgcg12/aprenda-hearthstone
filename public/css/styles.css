@@ -1,0 +1,63 @@
+@font-face {
+    font-family: Hearthstone;
+    src: url(/fonts/Belwe-Medium.otf);
+}
+@font-face {
+    font-family: Chalk;
+    src: url(/fonts/Eraser-Regular.ttf);
+}
+.chalk{
+  font-family: Chalk;
+  /*background-image: url(https://testdrive-archive.azurewebsites.net/performance/chalkboard/Images/EmptyChalkboard.svg);
+background-position: center center;
+background-size: cover;
+padding: 10%;*/
+}
+*{
+  font-family: Hearthstone
+}
+.hsbackground1{
+  /*background: url(https://media.giphy.com/media/Xrl6sktpCWjoQ/giphy.gif) no-repeat center center;*/
+  /*background: url(https://media.giphy.com/media/J7uZJwevruQ7u/giphy.gif) no-repeat center center;*/
+  background: url("https://media.giphy.com/media/fkGQK5zgtgwNi/giphy.gif") no-repeat center center;
+  height: 600px;
+  background-size: cover;
+  filter: drop-shadow(#c29a56 0px 10px 13px);
+}
+.hsbackground2{
+  background: url(/img/bg2.jpg) no-repeat center center;
+  background-size: cover;
+  filter: drop-shadow(#c29a56 0px 10px 13px);
+}
+.white{
+  color: white
+}
+.bannertext{padding-top: 8%;}
+
+.navbar-floating{margin:4%;border-radius: 10px}
+.fundoquadro{
+  background: url(/img/chalkboard.jpg);
+
+}
+.cards{margin-top: -120px;}
+.nav-item, .navbar-brand,#navbarSupportedContent > form > input,#navbarSupportedContent > form > button{filter: drop-shadow(#a1a1a1 1px 3px 5px);}
+.drop-shadow-black{filter: drop-shadow(#000 1px 1px 5px);}
+.full-rounded{border-radius:50%}
+.sepia{filter: sepia(100%)}
+.uther{width: 72%}
+.navbar-light .navbar-toggler{width: 100%;}
+@media (max-width: 992px){.uther{width:unset}}
+@media (max-width: 420px){.bannertext {
+    padding-top: 30%;
+}
+.cards {
+    margin-top: -120px;
+}}
+.h-100px{    height: 100px;}
+.minicurso{
+    border: 2px solid #28a745;
+    border-radius: 2%;
+    padding: 1%;
+    margin: 5px;
+}
+.w-170px{width: 170px}
