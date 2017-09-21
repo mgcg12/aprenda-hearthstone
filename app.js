@@ -55,20 +55,20 @@ app.get("/", function(req,res){
 // })
 
 
-app.get("/aulas", function(req, res){
-    // GET ALL CMMS FROM DB
-    Comment.find({}, function(error, comment){
-        if(error){
-            console.log(error)
-        } else{
-            res.render("aulas", {comment: comment});
-        }
-    });
+// app.get("/aulas", function(req, res){
+//     // GET ALL CMMS FROM DB
+//     Comment.find({}, function(error, comment){
+//         if(error){
+//             console.log(error)
+//         } else{
+//             res.render("aulas", {comment: comment});
+//         }
+//     });
     
 
-});
+// });
 
-app.get("/aulas2", function(req, res){
+app.get("/aulas", function(req, res){
 	var json = {};
     // GET ALL CMMS FROM DB
     // Comment.find({});
@@ -86,7 +86,7 @@ app.get("/aulas2", function(req, res){
 
     Aula.find(function (error, aula) {
       json.aulas = aula;
-      res.render("aulas2", json);
+      res.render("aulas", json);
    
     })})
 });
