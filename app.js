@@ -121,7 +121,7 @@ app.get("/aulas/:id", function(req, res) {
         if (error) {
             console.log(error)
         } else {
-            console.log("Página da aula '" + aulaEncontrada.name + "' foi visualizada.");
+            console.log("Página da aula '" + aulaEncontrada.nome + "' foi visualizada.");
             res.render("show", {aula: aulaEncontrada});
         }
     });
