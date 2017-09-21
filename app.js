@@ -29,7 +29,14 @@ var listMemberSchema = new mongoose.Schema({
 });
 var ListMember = mongoose.model("ListMember", listMemberSchema);
 
+var aulaSchema = new mongoose.Schema({
+    nome: String,
+    descricao: String,
+    conteudo: String
+});
+var Aula = mongoose.model("Aula", aulaSchema);
 
+//
 
 app.get("/", function(req,res){
     // GET ALL CMMS FROM DB
@@ -61,9 +68,35 @@ app.get("/aulas", function(req, res){
 
 });
 
+app.get("/aulas2", function(req, res){
+	var json = {};
+    // GET ALL CMMS FROM DB
+    // Comment.find({});
+
+    // Aula.find({}, function(error, aula){
+    //     if(error){
+    //         console.log(error)
+    //     } else{
+    //         res.render("aulas2", {aulas: aula});
+    //     }
+    // });
+    
+    Comment.find(function(err, comment) {
+    json.comment = comment;
+
+    Aula.find(function (error, aula) {
+      json.aulas = aula;
+      res.render("aulas2", json);
+   
+    })})
+});
+
 
 app.get("/sobre", function(req,res){
 	res.render("sobre")
+})
+app.get("/novaAula", function(req,res){
+	res.render("novaAula")
 })
 
 app.post("/addCmm", function(req,res){
@@ -92,6 +125,22 @@ app.post("/addNewsletter", function(req,res){
         } else {
             console.log(req.body.email + " se cadastrou na Newsletter" );
         	res.redirect("/aulas")
+        }
+    });
+})
+
+app.post("/addAula", function(req,res){
+    console.log("/addAula Route acessed!");
+    var nome = req.body.nome;
+    var descricao = req.body.descricao;
+    var conteudo = req.body.conteudo;
+    var newAula = {nome: nome, descricao: descricao, conteudo: conteudo};
+    Aula.create(newAula, function(error, aula){
+        if (error){
+            console.log(error)
+        } else {
+            console.log("Aula '" + req.body.nome + "'' adicionada!" );
+        	res.redirect("/aulas2")
         }
     });
 })
