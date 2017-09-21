@@ -7,7 +7,7 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json())
 mongoose.connect("mongodb://matheus:matheus@ds139994.mlab.com:39994/heroku_8gpr6wtd", {useMongoClient: true}, function(){
-	console.log("ok!")
+	console.log("and MongoDB is ok!")
 });
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')))
@@ -24,9 +24,24 @@ var commentSchema = new mongoose.Schema({
 var Comment = mongoose.model("Comment", commentSchema);
 
 
+var listMemberSchema = new mongoose.Schema({
+    email: String
+});
+var ListMember = mongoose.model("ListMember", listMemberSchema);
+
+
 
 app.get("/", function(req,res){
-	res.render("home")
+    // GET ALL CMMS FROM DB
+    Comment.find({}, function(error, comment){
+        if(error){
+            console.log(error)
+        } else{
+            res.render("home", {comment: comment});
+        }
+    });
+    
+
 })
 // app.get("/aulas", function(req,res){
 // 	res.render("aulas", {cmms: cmms})
@@ -34,7 +49,7 @@ app.get("/", function(req,res){
 
 
 app.get("/aulas", function(req, res){
-    // GET ALL CAMPS FROM DB
+    // GET ALL CMMS FROM DB
     Comment.find({}, function(error, comment){
         if(error){
             console.log(error)
@@ -50,14 +65,12 @@ app.get("/aulas", function(req, res){
 app.get("/sobre", function(req,res){
 	res.render("sobre")
 })
+
 app.post("/addCmm", function(req,res){
-    console.log("Route acessed!");
+    console.log("/addCmm Route acessed!");
     var nome = req.body.nome;
-    console.log("nome: "+nome)
     var cmm = req.body.cmm;
-    console.log("cmm: "+cmm)
     var cidade = req.body.cidade;
-    console.log("cidade: "+cidade)
     var newCmm = {nome: nome, cmm: cmm, cidade: cidade};
     Comment.create(newCmm, function(error, comment){
         if (error){
@@ -69,6 +82,20 @@ app.post("/addCmm", function(req,res){
     });
 })
 
+app.post("/addNewsletter", function(req,res){
+    console.log("/addNewsletter Route acessed!");
+    var email = req.body.email;
+    var newListMember = {email: email};
+    ListMember.create(newListMember, function(error, email){
+        if (error){
+            console.log(error)
+        } else {
+            console.log(req.body.email + " se cadastrou na Newsletter" );
+        	res.redirect("/aulas")
+        }
+    });
+})
+
 app.listen(process.env.PORT || 3000, function(){
-	console.log("Site on")
+	console.log("Node on")
 })
