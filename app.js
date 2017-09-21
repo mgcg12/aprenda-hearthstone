@@ -50,40 +50,12 @@ app.get("/", function(req,res){
     
 
 })
-// app.get("/aulas", function(req,res){
-// 	res.render("aulas", {cmms: cmms})
-// })
-
-
-// app.get("/aulas", function(req, res){
-//     // GET ALL CMMS FROM DB
-//     Comment.find({}, function(error, comment){
-//         if(error){
-//             console.log(error)
-//         } else{
-//             res.render("aulas", {comment: comment});
-//         }
-//     });
-    
-
-// });
 
 app.get("/aulas", function(req, res){
 	var json = {};
-    // GET ALL CMMS FROM DB
-    // Comment.find({});
-
-    // Aula.find({}, function(error, aula){
-    //     if(error){
-    //         console.log(error)
-    //     } else{
-    //         res.render("aulas2", {aulas: aula});
-    //     }
-    // });
     
     Comment.find(function(err, comment) {
     json.comment = comment;
-
     Aula.find(function (error, aula) {
       json.aulas = aula;
       res.render("aulas", json);
@@ -140,7 +112,7 @@ app.post("/addAula", function(req,res){
             console.log(error)
         } else {
             console.log("Aula '" + req.body.nome + "'' adicionada!" );
-        	res.redirect("/aulas2")
+        	res.redirect("/aulas")
         }
     });
 })
