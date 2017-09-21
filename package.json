@@ -16,7 +16,9 @@
   "dependencies": {
     "body-parser": "^1.18.1",
     "ejs": "^2.5.7",
+    "ejs-html": "^4.0.3",
     "express": "^4.15.4",
+    "froala-editor": "^2.7.0",
     "mongodb": "^2.2.31",
     "mongoose": "^4.11.12"
   },
