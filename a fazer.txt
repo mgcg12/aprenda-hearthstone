@@ -15,9 +15,12 @@ classes
 	conheça todas
 	a lógica das classes
 	personagens especiais
-fórum
-artigos
-cursos (estilo codecademy)
 crie seu card personalizado
 simulador de hearthstone
 Encontros Fireside
+
+ok criar conta
+login
+só pode criar aula logado
+só o dono da aula pode editar
+adicionar data e autor na aula

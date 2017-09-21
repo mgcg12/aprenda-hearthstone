@@ -79,7 +79,7 @@ padding: 10%;*/
 }
 .cards{margin-top: -120px;}
 .logo{margin-top: -200px;}
-.nav-item, .navbar-brand,#navbarSupportedContent > form > input,#navbarSupportedContent > form > button{filter: drop-shadow(#a1a1a1 1px 3px 5px);}
+.nav-item,.search-shadow, .navbar-brand,#navbarSupportedContent > form > input,#navbarSupportedContent > form > button{filter: drop-shadow(#a1a1a1 1px 3px 5px);}
 .drop-shadow-black{filter: drop-shadow(#000 1px 1px 5px);}
 .full-rounded{border-radius:50%}
 .sepia{filter: sepia(100%)}

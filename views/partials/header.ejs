@@ -38,13 +38,23 @@
       </li>
     </ul>
     <ul class="navbar-nav mr-2">
-      <li class="nav-item">
-        <a class="btn btn-success" href="/novaaula">Criar aula</a>
+      <li class="nav-item dropdown">
+        <a id="accountdropdown" data-toggle="dropdown" class="btn btn-success ml-1 dropdown-toggle" href="/criar-conta">Conta</a>
+        <div class="dropdown-menu" aria-labelledby="accountdropdown">
+          <a class="dropdown-item" href="/criar-conta">Criar conta</a>
+          <a class="dropdown-item" href="/criar-aula">Criar aula</a>
+        </div>
+      </li>
+
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input width="170" class="w-170px form-control mr-sm-2" type="text" placeholder="Digite aqui..." aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Procurar!</button>
+    <form class="form-inline my-2 my-lg-0 search-shadow">
+       <div class="input-group">
+	      <input width="170" class="w-170px form-control" type="text" placeholder="Digite aqui..." aria-label="Search">
+	      <span class="input-group-btn">
+	      	<button class="btn btn-success my-2 my-sm-0" type="submit"><span class="fa fa-search"></span></button>
+	      </span>
+	      </div>
     </form>
   </div>
 </nav>
