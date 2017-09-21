@@ -111,4 +111,4 @@ padding: 10%;*/
 .bouncein-4:hover{filter: drop-shadow(#28a745 3px 3px 2px);}
 .h-200{height: 200px;}
 .border-radius-5{border-radius: 10px;}
-.comment{padding: 5px; border: 2px solid #28a745;}
+.comment{padding: 5px; border: 2px solid #28a745; margin: 0;}
