@@ -14,7 +14,7 @@
                 <div class="text-center mb-3"><img class="img-fluid border-radius-5" src="/img/legend.jpg" alt=""></div>
                 <h4 class="text-center my-4"><%= aula["nome"] %></h4>
                 <p><%= aula["descricao"] %></p>
-                <div class="text-center"><a href="#" class="my-2 btn btn-lg btn-success">Assistir aula!</a></div>
+                <div class="text-center"><a href="/aulas/<%= aula._id %>" class="my-2 btn btn-lg btn-success">Assistir aula!</a></div>
             </div>
           </div>
         <% }); %>

@@ -116,6 +116,16 @@ app.post("/addAula", function(req,res){
         }
     });
 })
+app.get("/aulas/:id", function(req, res) {
+    Aula.findById(req.params.id, function(error, aulaEncontrada){
+        if (error) {
+            console.log(error)
+        } else {
+            console.log("Página da aula '" + aulaEncontrada.name + "' foi visualizada.");
+            res.render("show", {aula: aulaEncontrada});
+        }
+    });
+})
 
 app.listen(process.env.PORT || 3000, function(){
 	console.log("Node on")
