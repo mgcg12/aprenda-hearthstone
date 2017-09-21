@@ -14,7 +14,6 @@
   "author": "Matheus Conrado",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.1",
     "ejs": "^2.5.7",
     "ejs-html": "^4.0.3",
