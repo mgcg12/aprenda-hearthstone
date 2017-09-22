@@ -35,10 +35,11 @@
  
     <!-- Initialize the editor. -->
     <script>
-      $(function() {
-        $('textarea').froalaEditor({
-        placeholderText: 'Digite aqui'
-        })
+      var quill = new Quill('.quilleditor', {
+        modules: {
+          toolbar: '#toolbar'
+        },
+        theme: 'snow'
       });
     </script> 
     <!-- Fim dos Scripts -->
