@@ -1,0 +1,13 @@
+          <form class="w-75 ml-auto mr-auto" action="/aulas/<%= aula._id %>?_method=PUT" method="POST" style="margin-top:150px">
+            <!-- <div class="input-group"> -->
+              <input type="text" class="form-control m-2" name="aula[autor]" placeholder="Autor*" aria-label="autor" required value="<%= aula.autor %>">
+              <input type="text" class="form-control m-2" name="aula[nome]" placeholder="Nome da aula*" aria-label="nome" required value="<%= aula.nome %>">
+              <input type="text" class="form-control m-2" name="aula[descricao]" placeholder="Breve descrição*" aria-label="cidade"  value="<%= aula.descricao %>" required>
+              <div class="justify-content-center p-1 my-3 text-center ml-auto mr-auto">
+              <textarea type="text" class="form-control m-2 quilleditor" name="aula[conteudo]" placeholder="Conteúdo*" aria-label="conteudo" required><%= aula.conteudo %></textarea>
+              </div>
+              <!-- <span class="input-group-btn"> -->
+                <div class="text-center drop-shadow-black"><input class="btn btn-success text-center" type="submit" name="enviar" value="Atualizar aula!"></div>
+              <!-- </span> -->
+            <!-- </div> -->
+          </form>

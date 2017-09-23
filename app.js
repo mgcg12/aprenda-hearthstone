@@ -4,7 +4,11 @@ var mongoose = require("mongoose");
 var path = require('path');
 var ejs = require('ejs-html');
 var session = require('express-session');
-
+var methodOverride = require("method-override");
+var Aula = require('./models/model.aula');
+var ListMember = require('./models/model.listmember');
+var Comment = require('./models/model.comment');
+var User = require('./models/model.user');
 var app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -15,93 +19,10 @@ mongoose.connect("mongodb://matheus:matheus@ds139994.mlab.com:39994/heroku_8gpr6
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(session({secret: 'work hard',resave: true,saveUninitialized: false}));
+app.use(methodOverride("_method"));
 
 
-// SCHEMA SETUP
-var UserSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    unique: true,
-    required: true,
-    trim: true
-  },
-  username: {
-    type: String,
-    unique: true,
-    required: true,
-    trim: true
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  passwordConf: {
-    type: String,
-    required: true,
-  }
-});
-
-
-// // autenticar usuário
-
-// UserSchema.statics.authenticate = function (username, password, callback) {
-//   User.findOne({ username: username })
-//     .exec(function (err, user) {
-//       if (err) {
-//         return callback(err)
-//       } else if (!user) {
-//         var err = new Error('User not found.');
-//         err.status = 401;
-//         return callback(err);
-//       }
-//       bcrypt.compare(password, user.password, function (err, result) {
-//         if (result === true) {
-//           return callback(null, user);
-//         } else {
-//           return callback();
-//         }
-//       })
-//     });
-// }
-// //
-
-// //hashing a password before saving it to the database
-// UserSchema.pre('save', function (next) {
-//   var user = this;
-//   bcrypt.hash(user.password, 10, function (err, hash){
-//     if (err) {
-//       return next(err);
-//     }
-//     user.password = hash;
-//     next();
-//   })
-// });
-
-var User = mongoose.model('User', UserSchema);
-
-var commentSchema = new mongoose.Schema({
-    nome: String,
-    cmm: String,
-    cidade: String
-});
-var Comment = mongoose.model("Comment", commentSchema);
-
-
-var listMemberSchema = new mongoose.Schema({
-    email: String
-});
-var ListMember = mongoose.model("ListMember", listMemberSchema);
-
-var aulaSchema = new mongoose.Schema({
-    autor: String,
-    data: String,
-    nome: String,
-    descricao: String,
-    conteudo: String
-});
-var Aula = mongoose.model("Aula", aulaSchema);
-
-//
+// get routes
 
 app.get("/", function(req,res){
     // GET ALL CMMS FROM DB
@@ -140,7 +61,16 @@ app.get('/logout', function(req, res, next) {
     });
   }
 });
-
+app.get("/aulas/:id", function(req, res) {
+    Aula.findById(req.params.id, function(error, aulaEncontrada){
+        if (error) {
+            console.log(error)
+        } else {
+            console.log("Página da aula '" + aulaEncontrada.nome + "' foi visualizada.");
+            res.render("show", {aula: aulaEncontrada});
+        }
+    });
+})
 app.get("/sobre", function(req,res){
 	res.render("sobre")
 })
@@ -153,7 +83,7 @@ app.get("/criar-conta", function(req,res){
 app.get("/login", function(req,res){
 	res.render("login")
 })
-
+//post routes
 app.post("/addUser", function(req,res){
     console.log("/addUser Route acessed!");
     var email = req.body.email;
@@ -228,16 +158,36 @@ app.post("/addAula", function(req,res){
         }
     });
 })
-app.get("/aulas/:id", function(req, res) {
-    Aula.findById(req.params.id, function(error, aulaEncontrada){
-        if (error) {
+//update routes
+app.get("/aulas/:id/edit", function(req,res){
+        Aula.findById(req.params.id, function(error,aula){
+            if(error){
+                console.log(error)
+            }else{
+                res.render("edit", {aula:aula})
+            }
+        })
+})
+/*app.put("/aulas/:id", function(req,res){
+    Aula.findByIdAndUpdate(req.params.id, req.body.aula, function(error, obj){
+        if(error){
+            res.render("error", {error:error})
+        }else{
+            res.redirect("/aulas/"+req.params.id)
+        }
+    })
+})*/
+app.put("/aulas/:id", function(req,res){
+    Aula.findByIdAndUpdate({_id: req.params.id}, req.body.blog, function(error,obj){
+        if (error){
             console.log(error)
-        } else {
-            console.log("Página da aula '" + aulaEncontrada.nome + "' foi visualizada.");
-            res.render("show", {aula: aulaEncontrada});
+            res.render("error", {error: error})
+        }else{
+            res.redirect("/aulas/"+req.params.id)
         }
     });
-})
+});
+
 
 app.listen(process.env.PORT || 3000, function(){
 	console.log("Node on")
