@@ -6,14 +6,20 @@
         </div>
         <div class="col-6">
             <img class="img-fluid border-radius-5" src="/img/legend.jpg" alt="">
-            
         </div>
         <div class="col-6">
+
             <p class="lead my-1">Autor: <%= aula.autor %></p>
             <p class="lead my-1">Data: <%= aula.data %></p>
             <p class="lead my-1"><%= aula.descricao %></p>
             <div class="content"><%- aula.conteudo %></div>
         </div>
+        <a class="btn btn-success m-3 drop-shadow-black" href="/aulas/<%= aula._id %>/edit">Editar esta aula</a>
+        <form action="/aulas/<%= aula._id %>?_method=DELETE" method="POST">
+            <input type="submit" class="btn btn-success m-3 drop-shadow-black" value="Deletar esta aula">
+        </form>
     </div>
+
 </div>
+
 <% include partials/footer %>

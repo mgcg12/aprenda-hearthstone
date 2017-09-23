@@ -1,4 +1,5 @@
 var express = require("express");
+var expressSanitized = require("express-sanitized");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var path = require('path');
@@ -12,7 +13,8 @@ var User = require('./models/model.user');
 var app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(expressSanitized());
 mongoose.connect("mongodb://matheus:matheus@ds139994.mlab.com:39994/heroku_8gpr6wtd", {useMongoClient: true}, function(){
 	console.log("and MongoDB is ok!")
 });
@@ -20,6 +22,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(session({secret: 'work hard',resave: true,saveUninitialized: false}));
 app.use(methodOverride("_method"));
+app.use('/ckeditor', express.static(__dirname + '/node_modules/ckeditor/'));
 
 
 // get routes
@@ -168,17 +171,8 @@ app.get("/aulas/:id/edit", function(req,res){
             }
         })
 })
-/*app.put("/aulas/:id", function(req,res){
-    Aula.findByIdAndUpdate(req.params.id, req.body.aula, function(error, obj){
-        if(error){
-            res.render("error", {error:error})
-        }else{
-            res.redirect("/aulas/"+req.params.id)
-        }
-    })
-})*/
 app.put("/aulas/:id", function(req,res){
-    Aula.findByIdAndUpdate({_id: req.params.id}, req.body.blog, function(error,obj){
+    Aula.findByIdAndUpdate(req.params.id, req.body.aula, function(error,obj){
         if (error){
             console.log(error)
             res.render("error", {error: error})
@@ -187,7 +181,17 @@ app.put("/aulas/:id", function(req,res){
         }
     });
 });
-
+//delete route
+app.delete("/aulas/:id", function(req,res){
+    Aula.findByIdAndRemove(req.params.id, function(error,aula){
+        if (error){
+            console.log(error)
+            res.render("error", {error: error})
+        }else{
+            res.redirect("/aulas")
+        }
+    })
+})
 
 app.listen(process.env.PORT || 3000, function(){
 	console.log("Node on")

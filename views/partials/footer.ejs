@@ -34,14 +34,9 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
  
     <!-- Initialize the editor. -->
-    <script>
-      var quill = new Quill('.quilleditor', {
-        modules: {
-          toolbar: '#toolbar'
-        },
-        theme: 'snow'
-      });
-    </script> 
+     <script>
+      CKEDITOR.replace( 'ckeditor' );
+     </script>
     <!-- Fim dos Scripts -->
   </body>
 </html>
